@@ -11,9 +11,9 @@ internal class Pojistenec
     public string Jmeno { get; private set; }
     public string Prijmeni { get; private set; }
     public int Vek { get; private set; }
-    public int Telefon { get; private set; }
+    public string Telefon { get; private set; }
 
-    public Pojistenec(string jmeno, string prijmeni, int vek, int telefon)
+    public Pojistenec(string jmeno, string prijmeni, int vek, string telefon)
     {
         Jmeno = jmeno;
         Prijmeni = prijmeni;
