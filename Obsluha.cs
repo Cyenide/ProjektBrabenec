@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace EvidenceBasic;
 
@@ -86,7 +87,8 @@ internal static class Obsluha
                     break;
 
                 default:
-                    Console.WriteLine("Neplatná volba, zadejte prosím znovu:");
+                    Console.WriteLine("Neplatná volba, zadejte prosím znovu.");
+                    Pokracovat();
                     break;
             }
         }
@@ -115,23 +117,27 @@ internal static class Obsluha
                     break;
 
                 default:
-                    Console.WriteLine("Neplatná volba, zadejte prosím znovu:");
+                    Console.WriteLine("Neplatná volba, zadejte prosím znovu.");
+                    Pokracovat();
                     break;
             }
             Console.WriteLine();
-            if (listNalezenych.Count() > 0)
+            if (volba == "1" || volba == "2" || volba == "3")
             {
-                Console.WriteLine("{0,-15}{1,-15}{2,-5}{3,-15}", "Jméno", "Příjmení", "Věk", "Telefon");
-                foreach (Pojistenec p in listNalezenych)
+                if (listNalezenych.Count() > 0)
                 {
-                    Console.WriteLine(p);
+                    Console.WriteLine("{0,-15}{1,-15}{2,-5}{3,-15}", "Jméno", "Příjmení", "Věk", "Telefon");
+                    foreach (Pojistenec p in listNalezenych)
+                    {
+                        Console.WriteLine(p);
+                    }
+                    Pokracovat();
                 }
-                Pokracovat();
-            }
-            else
-            {
-                Console.WriteLine("Nenalezen žádný pojištěnec odpovídající hledaným hodnotám.");
-                Pokracovat();
+                else
+                {
+                    Console.WriteLine("Nenalezen žádný pojištěnec odpovídající hledaným hodnotám.");
+                    Pokracovat();
+                }
             }
         }
     }
