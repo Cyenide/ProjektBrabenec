@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
-namespace EvidenceBasic;
+﻿namespace EvidenceBasic;
 
 internal class Evidence
 {
@@ -25,6 +17,8 @@ internal class Evidence
         evidence.Add(new Pojistenec("Petr", "Pekař", 40, "987654321"));
         evidence.Add(new Pojistenec("Patrik", "Pokorný", 34, "123456789"));
         evidence.Add(new Pojistenec("Jan", "Novák", 35, "987456321"));
+        evidence.Add(new Pojistenec("Karel", "Pokora", 55, "+421987456321"));
+        evidence.Add(new Pojistenec("Martina", "Kovárová", 35, "+421987456321"));
     }
 
     /// <summary>
@@ -33,12 +27,13 @@ internal class Evidence
     /// <param name="jmeno">Jméno přidávaného pojištěnce</param>
     /// <param name="prijmeni">Příjmení přidávaného pojištěnce</param>
     /// <param name="vek">Věk přidávaného pojištěnce</param>
-    /// <param name="telefon">Telefon přidávaného pojištěnce</param>
+    /// <param name="telefon">Telefonní číslo přidávaného pojištěnce</param>
     /// <returns>Vytvořeného pojištěnce</returns>
-    public Pojistenec PridatPojistence(string jmeno, string prijmeni, int vek, string telefon)
+    public Pojistenec PridatNovehoPojistence(string jmeno, string prijmeni, int vek, string telefon)
     {
-        evidence.Add(new Pojistenec(jmeno, prijmeni, vek, telefon));
-        return new Pojistenec(jmeno, prijmeni, vek, telefon);
+        Pojistenec pojistenec = new Pojistenec(jmeno, prijmeni, vek, telefon);
+        evidence.Add(pojistenec);
+        return pojistenec;
     }
 
     /// <summary>
@@ -61,6 +56,10 @@ internal class Evidence
         return listNalezenych;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>Vrací list všech pojištěných v paměti</returns>
     public List<Pojistenec> VratListVsechPojistenych()
     {
         return evidence;

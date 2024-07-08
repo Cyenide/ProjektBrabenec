@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EvidenceBasic;
+﻿namespace EvidenceBasic;
 
 internal class UzivatelskeRozhrani
 {
@@ -24,16 +17,14 @@ internal class UzivatelskeRozhrani
         Console.WriteLine("3 - Vyhledat pojištěného");
         Console.WriteLine("4 - Konec");
     }
-    
+
     /// <summary>
     /// Získá od uživatele hodnotu pro ovládání menu
     /// </summary>
     /// <returns>Zadanou hodnotu</returns>
-    public string ZvoleniVolby()
+    public char ZvoleniVolby()
     {
-        string volba = Console.ReadLine().Trim();
-        Console.WriteLine();
-        return volba;
+        return Console.ReadKey().KeyChar;
     }
 
     /// <summary>
@@ -51,43 +42,41 @@ internal class UzivatelskeRozhrani
     }
 
     /// <summary>
-    /// Vyžádá si křestní jméno z uživatelského vstupu
+    /// Vyžádá si jméno z uživatelského vstupu
     /// </summary>
+    /// <param name="typMetody">Výchozí hodnota 0 pro získání křestního jména nebo jakákoliv jiná pro získání příjmení</param>
     /// <returns>Zadané jméno jako string</returns>
-    public string ZjistiJmeno()
+    public string ZjistiJmeno(int typMetody = 0)
     {
         string jmeno = "";
 
-        while (jmeno.Length == 0)
-        {
-            Console.WriteLine("Zadejte křestní jméno pojištěného:");
-            jmeno = Console.ReadLine().Trim();
-            if (jmeno.Length == 0)
-            {
-                Console.WriteLine("Jméno nezadáno, zadejte prosim znovu.");
-            }
-        }
-        return jmeno;
-    }
+        if (typMetody == 0)
 
-    /// <summary>
-    /// Vyžádá si příjmení z uživatelského vstupu
-    /// </summary>
-    /// <returns>Zadané příjmení jako string</returns>
-    public string ZjistiPrijmeni()
-    {
-        string prijmeni = "";
-
-        while (prijmeni.Length == 0)
         {
-            Console.WriteLine("Zadejte příjmení:");
-            prijmeni = Console.ReadLine().Trim();
-            if (prijmeni.Length == 0)
+            while (jmeno.Length == 0)
             {
-                Console.WriteLine("Příjmení nezadáno, zadejte prosim znovu.");
+                Console.WriteLine("Zadejte křestní jméno pojištěného:");
+                jmeno = Console.ReadLine().Trim();
+                if (jmeno.Length == 0)
+                {
+                    Console.WriteLine("Jméno nezadáno, zadejte prosím znovu.");
+                }
             }
+            return jmeno;
         }
-        return prijmeni;
+        else
+        {
+            while (jmeno.Length == 0)
+            {
+                Console.WriteLine("Zadejte příjmení:");
+                jmeno = Console.ReadLine().Trim();
+                if (jmeno.Length == 0)
+                {
+                    Console.WriteLine("Příjmení nezadáno, zadejte prosím znovu.");
+                }
+            }
+            return jmeno;
+        }
     }
 
     /// <summary>
@@ -98,11 +87,11 @@ internal class UzivatelskeRozhrani
     {
         int vek = 0;
 
-        while (vek == 0)
+        while (vek <= 0)
         {
             Console.WriteLine("Zadejte věk:");
             int.TryParse(Console.ReadLine(), out vek);
-            if (vek == 0)
+            if (vek <= 0)
             {
                 Console.WriteLine("Zadejte prosím celé číslo větší než nula.");
             }
