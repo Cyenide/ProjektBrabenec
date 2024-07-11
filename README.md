@@ -1,2 +1,2 @@
-Lukáš Brabenec \n
+Lukáš Brabenec
 Projekt ve verzi basic v jazyce C#.
