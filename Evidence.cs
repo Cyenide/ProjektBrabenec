@@ -48,7 +48,7 @@ internal class Evidence
 
         foreach (Pojistenec p in evidence)
         {
-            if (p.Jmeno.ToLower() == jmeno && p.Prijmeni.ToLower() == prijmeni)
+            if (p.Jmeno.ToLower() == jmeno.ToLower() && p.Prijmeni.ToLower() == prijmeni.ToLower())
             {
                 listNalezenych.Add(p);
             }

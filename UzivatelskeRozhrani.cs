@@ -28,7 +28,7 @@ internal class UzivatelskeRozhrani
     }
 
     /// <summary>
-    /// Vypíše všechny pojištěné aktuálně v evidenci
+    /// Vypíše pojištěné aktuálně v listu
     /// </summary>
     /// <param name="list">List, který se má vypsat</param>
     public void VypsatPojistene(List<Pojistenec> list)
